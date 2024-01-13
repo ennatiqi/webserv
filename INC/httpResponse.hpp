@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   httpResponse.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aachfenn <aachfenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 09:44:52 by eboulhou          #+#    #+#             */
-/*   Updated: 2024/01/08 13:41:47 by eboulhou         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:49:56 by aachfenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "httpRequest.hpp"
 #include <sys/socket.h>
 #include <sys/types.h>
+#include "../parcing/parceConfFile.hpp"
 
 
 
@@ -25,13 +26,17 @@ class httpResponse: public httpRequest
 {
 public:
     std::ifstream file;
-    string filename;
+    // string filename;
     string header;
     size_t header_sent;
     char buffer[BUFFER_SIZE];
     int last_send;
     std::streamsize filePos;
     std::streamsize fileSize;
+    
+    Location* classLocation;
+    
+    
 
     const std::ifstream& getFile()const
     {
@@ -52,5 +57,6 @@ public:
     void setData();
 	void execute_cgi();
     // void openFile();
-    void openTheAppropriateFile();
+    void openTheAppropriateFile(string& str);
+	string fillThePathFile(string& redirection);
 };
