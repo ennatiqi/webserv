@@ -6,14 +6,13 @@
 #    By: aachfenn <aachfenn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/16 11:15:12 by aachfenn          #+#    #+#              #
-#    Updated: 2024/01/06 11:26:32 by aachfenn         ###   ########.fr        #
+#    Updated: 2024/03/22 14:21:51 by aachfenn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# SRC     = $(wildcard parcing/*.cpp)
 SRC     = $(wildcard **/*.cpp)
 
-CXXFLAGS   = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CXXFLAGS   = -Wall -Wextra -Werror -std=c++98 #-g -fsanitize=address
 
 OBJS    = ${SRC:.cpp=.o}
 
@@ -31,5 +30,7 @@ clean   :
 
 fclean  : clean
 		${RM} ${NAME}
+		${RM} *.html
+		
 
 re      : fclean all

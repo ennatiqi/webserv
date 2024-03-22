@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aachfenn <aachfenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 11:27:53 by aachfenn          #+#    #+#             */
-/*   Updated: 2024/01/12 15:29:34 by aachfenn         ###   ########.fr       */
+/*   Created: 2023/12/15 11:27:53 by rennatiq          #+#    #+#             */
+/*   Updated: 2024/03/22 13:44:25 by aachfenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,22 @@ class Location {
 	string path;
 	string default_file;
 	vector<string> methods;
-	// string cgi_bin;
 	string cgi_extension;
-		Location() {}
-		~Location() {}
+	string alias;
+
+	int return_exist;
+	int return_status;
+	string return_url;
+	
+	Location() : default_file("index.html"), return_exist(false) {}
+	~Location() {}
 };
 
 class Server {
 	public:
 		vector<string> listen;
-		string host;
+
+		string server_name;
 		string root;
 		vector<string> error_pages;
 		double client_body_size;
@@ -72,6 +78,7 @@ class parceConfFile
 		string my_trim(string str);
 		void check_ifdata_isnot_empty();
 		void check_ifdata_is_valid();
+		void add_the_necessary_data();
 
 };
 
